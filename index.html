@@ -1,0 +1,1281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amount of Substance - A-Level Chemistry</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Plus Jakarta Sans & JetBrains Mono -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
+    
+    <!-- MathJax Configuration (strict bracket notation, zero dollar signs) -->
+    <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['\\(', '\\)']],
+        displayMath: [['\\[', '\\]']]
+      }
+    };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    
+    <style>
+        body {
+            font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            letter-spacing: -0.011em;
+        }
+        .font-mono-custom {
+            font-family: 'JetBrains Mono', monospace;
+        }
+        .canvas-container {
+            position: relative;
+            background: #064e3b;
+            border-radius: 1rem;
+            overflow: hidden;
+            border: 1px solid #047857;
+            box-shadow: inset 0 2px 4px 0 rgba(0, 0, 0, 0.2);
+        }
+        .derivation-block {
+            background: #f0fdf4;
+            padding: 1.25rem;
+            border-radius: 0.75rem;
+            border: 1px solid #bbf7d0;
+            line-height: 1.8;
+        }
+        input::-webkit-outer-spin-button,
+        input::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.94);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(187, 247, 208, 0.75);
+            box-shadow: 0 4px 20px -2px rgba(6, 78, 59, 0.05), 0 2px 6px -1px rgba(6, 78, 59, 0.03);
+        }
+        .glass-card-accent {
+            background: rgba(255, 255, 255, 0.98);
+            border: 1px solid rgba(134, 239, 172, 0.85);
+            box-shadow: 0 10px 25px -3px rgba(6, 78, 59, 0.06);
+        }
+    </style>
+</head>
+<body class="bg-emerald-50/70 text-slate-800 antialiased selection:bg-emerald-200 selection:text-emerald-900">
+
+    <!-- Header Section -->
+    <header class="bg-gradient-to-b from-emerald-950 via-emerald-900 to-teal-950 text-white py-12 px-6 shadow-xl border-b border-emerald-500/20">
+        <div class="max-w-5xl mx-auto space-y-4">
+            <div class="flex flex-wrap items-center justify-between gap-3">
+                <span class="text-xs font-mono-custom font-semibold tracking-wider text-emerald-300 uppercase bg-emerald-900/60 px-3.5 py-1.5 rounded-full border border-emerald-500/30">
+                    A-Level Chemistry &bull; OCR &bull; AQA &bull; Edexcel &bull; IB DP
+                </span>
+            </div>
+            <h1 class="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-emerald-100 via-teal-200 to-emerald-400">
+                Amount of Substance
+            </h1>
+            <div class="flex flex-wrap gap-2 pt-1">
+                <span class="bg-emerald-900/50 text-emerald-200 text-xs px-3 py-1 rounded-full border border-emerald-700/60 font-medium">Avogadro's Constant</span>
+                <span class="bg-emerald-900/50 text-emerald-200 text-xs px-3 py-1 rounded-full border border-emerald-700/60 font-medium">Moles (n)</span>
+                <span class="bg-emerald-900/50 text-emerald-200 text-xs px-3 py-1 rounded-full border border-emerald-700/60 font-medium">Molar Mass (M)</span>
+                <span class="bg-emerald-900/50 text-emerald-200 text-xs px-3 py-1 rounded-full border border-emerald-700/60 font-medium">Water of Crystallisation</span>
+                <span class="bg-emerald-900/50 text-emerald-200 text-xs px-3 py-1 rounded-full border border-emerald-700/60 font-medium">Empirical Formula</span>
+                <span class="bg-emerald-900/50 text-emerald-200 text-xs px-3 py-1 rounded-full border border-emerald-700/60 font-medium">Molecular Formula</span>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-5xl mx-auto py-10 px-6 space-y-12">
+
+        <!-- Learning Objectives Card -->
+        <section class="glass-card-accent p-6 rounded-2xl">
+            <h2 class="text-base font-bold text-emerald-900 flex items-center gap-2 mb-3">
+                <svg class="w-5 h-5 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                </svg>
+                Core Specification Learning Objectives
+            </h2>
+            <ul class="grid grid-cols-1 md:grid-cols-3 gap-3.5 text-xs text-slate-700 leading-relaxed">
+                <li class="bg-white/80 p-3.5 rounded-xl border border-emerald-200/80 shadow-xs">
+                    <span class="text-emerald-700 font-bold block mb-1 uppercase tracking-wide text-[11px]">1. The Mole &amp; Avogadro</span>
+                    Calculate the number of particles, atoms, or ions using the mole concept and Avogadro's constant (\(L = 6.02 \times 10^{23}\text{ mol}^{-1}\)).
+                </li>
+                <li class="bg-white/80 p-3.5 rounded-xl border border-emerald-200/80 shadow-xs">
+                    <span class="text-emerald-700 font-bold block mb-1 uppercase tracking-wide text-[11px]">2. Mass &amp; Stoichiometry</span>
+                    Relate mass, molar mass, and amount of substance (\(n = m/M\)) to predict theoretical product yields in reacting chemical equations.
+                </li>
+                <li class="bg-white/80 p-3.5 rounded-xl border border-emerald-200/80 shadow-xs">
+                    <span class="text-emerald-700 font-bold block mb-1 uppercase tracking-wide text-[11px]">3. Formulae &amp; Hydrated Salts</span>
+                    Determine empirical and molecular formulae from composition by mass and experimental water of crystallisation crucible data.
+                </li>
+            </ul>
+        </section>
+
+        <!-- Section 1: The Mole & Avogadro's Constant -->
+        <section class="space-y-5">
+            <div class="border-b border-emerald-300 pb-2">
+                <h2 class="text-xl md:text-2xl font-bold text-emerald-950 flex items-center gap-2.5">
+                    <span class="flex items-center justify-center w-7 h-7 rounded-lg bg-emerald-600 text-white text-xs font-bold font-mono-custom">01</span>
+                    Amount of Substance &amp; The Mole
+                </h2>
+            </div>
+
+            <p class="text-sm text-slate-700 leading-relaxed">
+                The **amount of substance** (\(n\)) is a standard SI chemical quantity measured in **moles (mol)**. Because atoms, molecules, and ions are too submicroscopic to count individually, the mole links microscopic particle numbers directly to measurable macroscopic masses.
+            </p>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+                <div class="glass-card p-5 rounded-2xl space-y-2">
+                    <span class="bg-emerald-100 text-emerald-900 text-xs px-2.5 py-1 rounded-full font-bold">The Standard Scale</span>
+                    <h3 class="font-bold text-slate-900 text-sm">Carbon-12 Standard</h3>
+                    <p class="text-xs text-slate-600 leading-relaxed">
+                        One mole is defined as the amount of substance containing exactly as many elementary entities as there are carbon atoms in exactly \(12\text{ g}\) of pure carbon-12 (\({}^{12}\text{C}\)).
+                    </p>
+                    <div class="font-mono-custom text-emerald-900 bg-emerald-50/70 p-2 rounded text-[11px]">
+                        \(1\text{ mol of Al} = 27.0\text{ g}\)
+                    </div>
+                </div>
+
+                <div class="glass-card p-5 rounded-2xl space-y-2">
+                    <span class="bg-teal-100 text-teal-900 text-xs px-2.5 py-1 rounded-full font-bold">Avogadro's Constant (\(L\))</span>
+                    <h3 class="font-bold text-slate-900 text-sm">Number of Particles</h3>
+                    <p class="text-xs text-slate-600 leading-relaxed">
+                        The number of specified particles per mole of substance. It applies to atoms, molecules, ions, electrons, or formula units:
+                    </p>
+                    <div class="font-mono-custom text-emerald-950 bg-teal-50/70 p-2 rounded text-xs font-bold text-center">
+                        \(L = 6.02 \times 10^{23}\text{ mol}^{-1}\)
+                    </div>
+                </div>
+
+                <div class="glass-card p-5 rounded-2xl space-y-2">
+                    <span class="bg-amber-100 text-amber-900 text-xs px-2.5 py-1 rounded-full font-bold">Particle Count Equation</span>
+                    <h3 class="font-bold text-slate-900 text-sm">Converting Moles to Particles</h3>
+                    <p class="text-xs text-slate-600 leading-relaxed">
+                        The total number of particles (\(N\)) is found by multiplying moles (\(n\)) by Avogadro's constant (\(L\)):
+                    </p>
+                    <div class="font-mono-custom text-amber-900 bg-amber-50/70 p-2 rounded text-xs font-bold text-center">
+                        \(N = n \times L\)
+                    </div>
+                </div>
+            </div>
+
+            <!-- Mathematical Core Formulas -->
+            <div class="derivation-block text-center space-y-2">
+                <span class="text-xs uppercase font-mono-custom font-bold text-emerald-800 tracking-wider block">Molar Mass Relationships</span>
+                <div class="text-base sm:text-lg font-bold text-slate-900 font-mono-custom">
+                    \[\text{Moles } (n) = \frac{\text{Mass } (m)}{\text{Molar Mass } (M)} \quad \implies \quad m = n \times M\]
+                </div>
+                <p class="text-xs text-slate-600">
+                    Where mass (\(m\)) is measured in grams (\(\text{g}\)), molar mass (\(M\) or \(M_r\)) in \(\text{g mol}^{-1}\), and amount of substance (\(n\)) in \(\text{mol}\).
+                </p>
+            </div>
+
+            <!-- Interactive Mole and Particle Converter Engine -->
+            <div class="glass-card-accent p-6 rounded-2xl space-y-4">
+                <div class="flex flex-wrap items-center justify-between gap-2 border-b border-emerald-200 pb-2">
+                    <h3 class="font-bold text-base text-emerald-950">Interactive Mole &amp; Particle Converter</h3>
+                    <span class="text-xs font-mono-custom text-emerald-700 font-semibold">Real-time \(n = m/M\) and \(N = n \times L\)</span>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 items-center bg-emerald-950 p-5 rounded-xl text-white">
+                    <div>
+                        <label class="block text-xs font-semibold text-emerald-200 mb-1">Select Substance:</label>
+                        <select id="calc-substance-select" class="w-full bg-emerald-900 border border-emerald-700 p-2 rounded-lg text-xs outline-none font-mono-custom" onchange="updateMoleConverter()">
+                            <option value="44.01|CO2|Carbon dioxide">CO₂ Molar Mass ( M = 44g/mol )</option>
+                            <option value="18.02|H2O|Water">H₂O \( (M = 18.0\text{ g mol}^{-1}) \)</option>
+                            <option value="100.09|CaCO3|Calcium carbonate">CaCO₃ \( (M = 100.1\text{ g mol}^{-1}) \)</option>
+                            <option value="95.21|MgCl2|Magnesium chloride">MgCl₂ \( (M = 95.2\text{ g mol}^{-1}) \)</option>
+                            <option value="159.70|Fe2O3|Iron(III) oxide">Fe₂O₃ \( (M = 159.7\text{ g mol}^{-1}) \)</option>
+                            <option value="107.87|Ag|Silver atoms">Ag \( (M = 107.9\text{ g mol}^{-1}) \)</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label class="block text-xs font-semibold text-emerald-200 mb-1">Sample Mass (\(m\) in grams):</label>
+                        <input type="number" id="calc-mass-input" value="264" min="0.01" step="1" class="w-full bg-emerald-900 border border-emerald-700 p-2 rounded-lg text-xs outline-none font-mono-custom text-white" oninput="updateMoleConverter()">
+                    </div>
+
+                    <div class="bg-black/50 p-3 rounded-lg border border-emerald-800/60 text-center font-mono-custom space-y-1">
+                        <span class="text-[10px] text-emerald-300 block uppercase font-bold">Computed Output:</span>
+                        <div id="calc-result-moles" class="text-lg font-bold text-amber-300">6.000 mol</div>
+                        <div id="calc-result-particles" class="text-[11px] text-emerald-100">3.612 &times; 10²⁴ molecules</div>
+                    </div>
+                </div>
+
+                <div id="calc-step-breakdown" class="p-3.5 bg-emerald-50/70 rounded-xl border border-emerald-200 text-xs text-slate-700 font-mono-custom leading-relaxed">
+                    <!-- Populated dynamically via JS -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 2: Stoichiometric Quantities in Reacting Equations -->
+        <section class="space-y-5">
+            <div class="border-b border-emerald-300 pb-2">
+                <h2 class="text-xl md:text-2xl font-bold text-emerald-950 flex items-center gap-2.5">
+                    <span class="flex items-center justify-center w-7 h-7 rounded-lg bg-emerald-600 text-white text-xs font-bold font-mono-custom">02</span>
+                    Amount of Substance in Chemical Equations
+                </h2>
+            </div>
+
+            <p class="text-sm text-slate-700 leading-relaxed">
+                Stoichiometric coefficients in a balanced chemical equation dictate the **mole ratios** between reacting particles and products. Two systematic approaches can be used to determine theoretical yield:
+            </p>
+
+            <!-- Methods comparison card -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-5 text-xs">
+                <div class="glass-card p-5 rounded-2xl space-y-3">
+                    <span class="bg-emerald-100 text-emerald-900 text-xs px-2.5 py-1 rounded-full font-bold font-mono-custom">Method 1 &bull; The Mole Ratio Route</span>
+                    <h3 class="font-bold text-slate-900 text-sm">Convert to Moles First</h3>
+                    <ol class="list-decimal pl-4 space-y-1.5 text-slate-600 leading-relaxed">
+                        <li>Calculate moles of known reactant: \(n = \frac{m}{M}\).</li>
+                        <li>Apply the balanced equation stoichiometric ratio to deduce moles of unknown product.</li>
+                        <li>Convert product moles back into mass: \(m = n \times M\).</li>
+                    </ol>
+                    <div class="bg-emerald-50/60 p-2.5 rounded-lg border border-emerald-200 font-mono-custom text-[11px] text-slate-800">
+                        \(50.0\text{ g Na} \to n = \frac{50.0}{23.0} = 2.17\text{ mol}\)<br>
+                        \(\text{Ratio } 4\text{Na} : 2\text{Na}_2\text{O} = 2 : 1 \implies n(\text{Na}_2\text{O}) = 1.087\text{ mol}\)<br>
+                        \(m = 1.087 \times 62.0 = \mathbf{67.4\text{ g}}\)
+                    </div>
+                </div>
+
+                <div class="glass-card p-5 rounded-2xl space-y-3">
+                    <span class="bg-teal-100 text-teal-900 text-xs px-2.5 py-1 rounded-full font-bold font-mono-custom">Method 2 &bull; Direct Reacting Mass Proportions</span>
+                    <h3 class="font-bold text-slate-900 text-sm">Direct Scaling by Total Formula Mass</h3>
+                    <ol class="list-decimal pl-4 space-y-1.5 text-slate-600 leading-relaxed">
+                        <li>Multiply each formula mass by its stoichiometric balancing coefficient.</li>
+                        <li>Set up a direct mathematical cross-multiplication proportion between known mass and target product.</li>
+                        <li>Solve directly for mass \(m\).</li>
+                    </ol>
+                    <div class="bg-teal-50/60 p-2.5 rounded-lg border border-teal-200 font-mono-custom text-[11px] text-slate-800">
+                        \[4\text{Na} \to 2\text{Na}_2\text{O}\]
+                        \[(4 \times 23.0\text{ g}) \to (2 \times 62.0\text{ g}) \implies 92.0\text{ g} \to 124.0\text{ g}\]
+                        \[m = \frac{124.0 \times 50.0}{92.0} = \mathbf{67.4\text{ g}}\]
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 3: Core Practical 1 — Hydrated Salts -->
+        <section class="space-y-5">
+            <div class="border-b border-emerald-300 pb-2">
+                <h2 class="text-xl md:text-2xl font-bold text-emerald-950 flex items-center gap-2.5">
+                    <span class="flex items-center justify-center w-7 h-7 rounded-lg bg-emerald-600 text-white text-xs font-bold font-mono-custom">03</span>
+                    Core Practical 1: Formula of a Hydrated Salt
+                </h2>
+            </div>
+
+            <p class="text-sm text-slate-700 leading-relaxed">
+                Many ionic salts incorporate water molecules within their solid crystal lattice, known as **water of crystallisation** (e.g., \(\text{CuSO}_4 \cdot x\text{H}_2\text{O}\)). Heating the salt drives off water as steam, leaving behind anhydrous salt.
+            </p>
+
+            <!-- Interactive Virtual Laboratory Simulation of Core Practical 1 -->
+            <div class="glass-card-accent p-6 rounded-2xl space-y-4">
+                <div class="flex flex-wrap items-center justify-between gap-2 border-b border-emerald-200 pb-2">
+                    <h3 class="font-bold text-base text-emerald-950 flex items-center gap-2">
+                        <svg class="w-5 h-5 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"/>
+                        </svg>
+                    </h3>
+                    <span id="crucible-step-badge" class="text-xs font-mono-custom font-bold px-3 py-1 rounded-full bg-emerald-100 text-emerald-800 border border-emerald-300">
+                        Step 1: Empty Crucible &amp; Lid
+                    </span>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+                    <!-- Left: Interactive Canvas & Workbench -->
+                    <div class="lg:col-span-7 space-y-3">
+                        <div class="canvas-container h-80 bg-slate-950 flex flex-col justify-between p-4 relative overflow-hidden">
+                            <!-- Digital Balance & Status HUD -->
+                            <div class="flex justify-between items-center text-xs font-mono-custom bg-black/60 px-3 py-2 rounded-lg border border-emerald-800/50 text-white z-10">
+                                <div>State: <span id="sim-state-text" class="text-emerald-300 font-bold">Cold &amp; Clean</span></div>
+                                <div class="flex items-center gap-2">
+                                    <span class="text-slate-400">Balance:</span>
+                                    <span id="sim-balance-mass" class="text-amber-300 font-bold text-sm bg-black px-2 py-0.5 rounded border border-amber-500/40">25.68 g</span>
+                                </div>
+                            </div>
+
+                            <!-- Interactive SVG Workbench Illustration -->
+                            <div class="relative w-full h-52 flex items-center justify-center">
+                                <svg width="340" height="200" viewBox="0 0 340 200" class="overflow-visible" id="svg-crucible-stage">
+                                    <!-- Heatproof mat -->
+                                    <rect x="40" y="180" width="260" height="12" rx="2" fill="#334155" stroke="#475569" stroke-width="1.5" />
+                                    <text x="170" y="190" fill="#94a3b8" font-size="8" font-family="'JetBrains Mono', monospace" text-anchor="middle">Heatproof Mat</text>
+
+                                    <!-- Tripod stand -->
+                                    <line x1="85" y1="120" x2="65" y2="180" stroke="#64748b" stroke-width="4" stroke-linecap="round" />
+                                    <line x1="170" y1="120" x2="170" y2="180" stroke="#475569" stroke-width="3.5" stroke-linecap="round" />
+                                    <line x1="255" y1="120" x2="275" y2="180" stroke="#64748b" stroke-width="4" stroke-linecap="round" />
+                                    <line x1="85" y1="120" x2="255" y2="120" stroke="#64748b" stroke-width="4" />
+
+                                    <!-- Pipeclay triangle on top of tripod -->
+                                    <polygon points="125,116 215,116 170,126" fill="none" stroke="#e2e8f0" stroke-width="3" stroke-linejoin="round" />
+
+                                    <!-- Bunsen Burner -->
+                                    <rect x="156" y="145" width="28" height="35" fill="#475569" rx="1" />
+                                    <rect x="145" y="176" width="50" height="5" fill="#334155" rx="1" />
+                                    <circle cx="170" cy="165" r="4" fill="#0f172a" /> <!-- air hole -->
+
+                                    <!-- Animated Bunsen Flames (Gentle & Roaring) -->
+                                    <g id="svg-flame-group" class="hidden">
+                                        <!-- Outer flame -->
+                                        <path id="svg-outer-flame" d="M 170 145 C 158 135, 156 120, 170 102 C 184 120, 182 135, 170 145 Z" fill="#38bdf8" fill-opacity="0.8" />
+                                        <!-- Inner roaring cone -->
+                                        <path id="svg-inner-flame" d="M 170 145 C 163 138, 163 128, 170 115 C 177 128, 177 138, 170 145 Z" fill="#67e8f9" />
+                                    </g>
+
+                                    <!-- Animated Steam Vapors -->
+                                    <g id="svg-steam-group" class="hidden">
+                                        <path id="svg-steam-1" d="M 160 70 Q 155 50 162 30" fill="none" stroke="#e2e8f0" stroke-width="2" stroke-dasharray="4" stroke-linecap="round" opacity="0.8" />
+                                        <path id="svg-steam-2" d="M 172 68 Q 178 48 170 28" fill="none" stroke="#e2e8f0" stroke-width="2.5" stroke-dasharray="4" stroke-linecap="round" opacity="0.85" />
+                                        <path id="svg-steam-3" d="M 182 72 Q 190 52 184 32" fill="none" stroke="#e2e8f0" stroke-width="1.8" stroke-dasharray="3" stroke-linecap="round" opacity="0.75" />
+                                    </g>
+
+                                    <!-- Porcelain Crucible Body -->
+                                    <path d="M 142 90 L 150 118 C 152 124, 188 124, 190 118 L 198 90 Z" fill="#f8fafc" stroke="#cbd5e1" stroke-width="2" />
+                                    <!-- Inner crystal bed inside crucible -->
+                                    <ellipse cx="170" cy="112" rx="16" ry="6" id="svg-crystal-bed" fill="transparent" class="transition-colors duration-1000" />
+
+                                    <!-- Crucible Lid (Tilted to allow steam to escape and avoid spitting) -->
+                                    <g id="svg-crucible-lid" transform="translate(0, 0)">
+                                        <path d="M 138 90 C 145 84, 195 84, 202 90 Z" fill="#f1f5f9" stroke="#94a3b8" stroke-width="1.8" />
+                                        <circle cx="170" cy="85" r="3" fill="#cbd5e1" /> <!-- lid handle -->
+                                    </g>
+                                </svg>
+                            </div>
+
+                            <!-- Live Feedback Status Bar -->
+                            <div id="sim-status-banner" class="text-center text-xs font-mono-custom bg-emerald-950/80 text-emerald-200 py-1.5 px-3 rounded-lg border border-emerald-700/60 z-10">
+                                Crucible dry and ready. Initial empty mass recorded on balance.
+                            </div>
+                        </div>
+
+                        <!-- Interactive Action Controls -->
+                        <div class="grid grid-cols-2 sm:grid-cols-4 gap-2">
+                            <button id="btn-lab-step1" onclick="labSetStage(1)" class="py-2 px-2.5 rounded-lg text-xs font-bold font-sans transition bg-emerald-700 text-white shadow-sm border border-emerald-500">
+                                1. Empty Mass
+                            </button>
+                            <button id="btn-lab-step2" onclick="labSetStage(2)" class="py-2 px-2.5 rounded-lg text-xs font-bold font-sans transition bg-white/80 hover:bg-emerald-50 text-slate-700 border border-emerald-200">
+                                2. Add Salt
+                            </button>
+                            <button id="btn-lab-step3" onclick="labSetStage(3)" class="py-2 px-2.5 rounded-lg text-xs font-bold font-sans transition bg-white/80 hover:bg-emerald-50 text-slate-700 border border-emerald-200" disabled>
+                                3. Heat &amp; Dehydrate
+                            </button>
+                            <button id="btn-lab-step4" onclick="labSetStage(4)" class="py-2 px-2.5 rounded-lg text-xs font-bold font-sans transition bg-white/80 hover:bg-emerald-50 text-slate-700 border border-emerald-200" disabled>
+                                4. Reheat to Constant
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Right: Dynamic Practical Results & Constant Mass Table -->
+                    <div class="lg:col-span-5 space-y-3">
+                        <div class="bg-white/95 p-4 rounded-xl border border-emerald-200 space-y-3 shadow-xs">
+                            <span class="text-xs font-mono-custom font-bold text-emerald-900 uppercase tracking-wide block border-b border-emerald-100 pb-1">
+                                Practical Weighing Log
+                            </span>
+
+                            <div class="space-y-1.5 text-xs font-mono-custom">
+                                <div class="flex justify-between p-1.5 rounded bg-emerald-50/60 border border-emerald-100">
+                                    <span class="text-slate-600">Empty Crucible + Lid:</span>
+                                    <span class="font-bold text-slate-900" id="res-m-empty">25.68 g</span>
+                                </div>
+                                <div class="flex justify-between p-1.5 rounded bg-emerald-50/60 border border-emerald-100">
+                                    <span class="text-slate-600">+ Hydrated Salt:</span>
+                                    <span class="font-bold text-slate-900" id="res-m-hydrated">--</span>
+                                </div>
+                                    <div class="flex justify-between p-1.5 rounded bg-emerald-50/60 border border-emerald-100">
+                                        <span class="text-slate-600">Sample Mass:</span>
+                                        <span class="font-bold text-emerald-800" id="res-m-sample">--</span>
+                                    </div>
+                            </div>
+
+                            <!-- Reheating Cycles Table -->
+                            <div>
+                                <span class="text-[11px] font-bold text-slate-700 block mb-1">Heating Cycles to Constant Mass:</span>
+                                <table class="w-full text-xs text-left font-mono-custom border-collapse">
+                                    <thead>
+                                        <tr class="bg-slate-100 text-slate-600 text-[11px]">
+                                            <th class="p-1.5 border border-emerald-200">Cycle</th>
+                                            <th class="p-1.5 border border-emerald-200">Mass / g</th>
+                                            <th class="p-1.5 border border-emerald-200">Observation</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="table-heating-cycles" class="divide-y divide-emerald-100 text-[11px]">
+                                        <tr><td class="p-1.5 border border-emerald-100">Cycle 1</td><td class="p-1.5 border border-emerald-100 text-slate-400">--</td><td class="p-1.5 border border-emerald-100 text-slate-400">Awaiting heat</td></tr>
+                                        <tr><td class="p-1.5 border border-emerald-100">Cycle 2</td><td class="p-1.5 border border-emerald-100 text-slate-400">--</td><td class="p-1.5 border border-emerald-100 text-slate-400">Awaiting heat</td></tr>
+                                        <tr><td class="p-1.5 border border-emerald-100">Cycle 3</td><td class="p-1.5 border border-emerald-100 text-slate-400">--</td><td class="p-1.5 border border-emerald-100 text-slate-400">Awaiting heat</td></tr>
+                                        <tr><td class="p-1.5 border border-emerald-100">Cycle 4</td><td class="p-1.5 border border-emerald-100 text-slate-400">--</td><td class="p-1.5 border border-emerald-100 text-slate-400">Awaiting heat</td></tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
+                            <!-- Live Derived Formula -->
+                            <div class="p-3 bg-emerald-100/70 rounded-xl border border-emerald-300 font-mono-custom text-xs space-y-1">
+                                <div class="flex justify-between text-emerald-950 font-bold">
+                                    <span>Water of Crystallisation (x):</span>
+                                    <span id="res-val-x" class="text-sm text-emerald-900 font-bold">--</span>
+                                </div>
+                                <div class="text-[11px] text-emerald-800" id="res-summary-formula">
+                                    Formula: Pending complete dehydration
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 9-Step Practical Flowchart -->
+            <div class="glass-card p-6 rounded-2xl space-y-4">
+                <div class="flex flex-wrap items-center justify-between gap-2 border-b border-emerald-200 pb-2">
+                    <h3 class="font-bold text-base text-emerald-950">Crucible Dehydration Procedure &amp; Data Pipeline</h3>
+                    <span class="text-xs font-mono-custom text-emerald-700 font-semibold">Laboratory Standard</span>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-5 gap-3 text-xs">
+                    <div class="bg-white/90 p-3 rounded-xl border border-emerald-200 shadow-xs space-y-1">
+                        <span class="w-5 h-5 rounded-full bg-rose-500 text-white flex items-center justify-center font-bold text-[10px] font-mono-custom">1</span>
+                        <strong class="block text-slate-900 text-xs">Weigh Crucible &amp; Lid</strong>
+                        <p class="text-slate-600 text-[11px]">Dry clean crucible and lid. Cool in desiccator and record initial empty mass (\(25.68\text{ g}\)).</p>
+                    </div>
+
+                    <div class="bg-white/90 p-3 rounded-xl border border-emerald-200 shadow-xs space-y-1">
+                        <span class="w-5 h-5 rounded-full bg-amber-500 text-white flex items-center justify-center font-bold text-[10px] font-mono-custom">2</span>
+                        <strong class="block text-slate-900 text-xs">Add Hydrated Salt</strong>
+                        <p class="text-slate-600 text-[11px]">Add crystals and reweigh (\(29.48\text{ g}\)). Salt mass = \(29.48 - 25.68 = 3.80\text{ g}\).</p>
+                    </div>
+
+                    <div class="bg-white/90 p-3 rounded-xl border border-emerald-200 shadow-xs space-y-1">
+                        <span class="w-5 h-5 rounded-full bg-sky-500 text-white flex items-center justify-center font-bold text-[10px] font-mono-custom">3</span>
+                        <strong class="block text-slate-900 text-xs">Heat Gently, Then Strongly</strong>
+                        <p class="text-slate-600 text-[11px]">Heat with Bunsen burner using lid to avoid spitting until steam ceases.</p>
+                    </div>
+
+                    <div class="bg-white/90 p-3 rounded-xl border border-emerald-200 shadow-xs space-y-1">
+                        <span class="w-5 h-5 rounded-full bg-emerald-600 text-white flex items-center justify-center font-bold text-[10px] font-mono-custom">4</span>
+                        <strong class="block text-slate-900 text-xs">Cool in Desiccator</strong>
+                        <p class="text-slate-600 text-[11px]">Cool in desiccator so dry anhydrous salt does not absorb atmospheric moisture.</p>
+                    </div>
+
+                    <div class="bg-white/90 p-3 rounded-xl border border-emerald-200 shadow-xs space-y-1 sm:col-span-2 lg:col-span-1">
+                        <span class="w-5 h-5 rounded-full bg-purple-600 text-white flex items-center justify-center font-bold text-[10px] font-mono-custom">5</span>
+                        <strong class="block text-slate-900 text-xs">Heat to Constant Mass</strong>
+                        <p class="text-slate-600 text-[11px]">Repeat heating, cooling, and reweighing until two successive masses agree (\(28.10\text{ g}\)).</p>
+                    </div>
+                </div>
+
+                <!-- Mathematical Deductions from Experiment -->
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-3 text-xs font-mono-custom pt-1">
+                    <div class="bg-emerald-50/70 p-3 rounded-xl border border-emerald-200">
+                        <span class="text-slate-500 block text-[10px] uppercase font-bold">6. Water Lost:</span>
+                        <div class="text-sm font-bold text-slate-900">\(m(\text{H}_2\text{O}) = 1.38\text{ g}\)</div>
+                        <span class="text-[10px] text-slate-500 font-sans">\(3.80\text{ g} - 2.42\text{ g}\)</span>
+                    </div>
+
+                    <div class="bg-emerald-50/70 p-3 rounded-xl border border-emerald-200">
+                        <span class="text-slate-500 block text-[10px] uppercase font-bold">7. Anhydrous Moles:</span>
+                        <div class="text-sm font-bold text-slate-900">\(0.01516\text{ mol}\)</div>
+                        <span class="text-[10px] text-slate-500 font-sans">\(\frac{2.42}{159.6}\text{ mol CuSO}_4\)</span>
+                    </div>
+
+                    <div class="bg-emerald-50/70 p-3 rounded-xl border border-emerald-200">
+                        <span class="text-slate-500 block text-[10px] uppercase font-bold">8. Water Moles:</span>
+                        <div class="text-sm font-bold text-slate-900">\(0.07667\text{ mol}\)</div>
+                        <span class="text-[10px] text-slate-500 font-sans">\(\frac{1.38}{18.0}\text{ mol H}_2\text{O}\)</span>
+                    </div>
+
+                    <div class="bg-emerald-100 p-3 rounded-xl border border-emerald-300">
+                        <span class="text-emerald-800 block text-[10px] uppercase font-bold">9. Molar Ratio:</span>
+                        <div class="text-base font-bold text-emerald-950">\(1 : 5.06 \approx 5\)</div>
+                        <span class="text-[11px] text-emerald-900 font-bold">\(\text{CuSO}_4 \cdot 5\text{H}_2\text{O}\)</span>
+                    </div>
+                </div>
+
+                <!-- Experimental Assumptions -->
+                <div class="p-4 bg-amber-50/70 rounded-xl border border-amber-200 text-xs text-amber-950 space-y-2">
+                    <strong class="font-bold block text-sm flex items-center gap-1.5">
+                        <svg class="w-4 h-4 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg>
+                        Two Crucial Practical Assumptions (Examiner Favorites):
+                    </strong>
+                    <ul class="list-disc pl-5 space-y-1 leading-relaxed">
+                        <li><strong>Assumption 1: All water has been lost.</strong> If heating is stopped prematurely or water remains trapped inside dense crystals, the calculated anhydrous mass will be too high, underestimating the mass of water and yielding an artificially low value for \(x\). <em>Solution: Reheat to constant mass.</em></li>
+                        <li><strong>Assumption 2: No further thermal decomposition.</strong> Many hydrated transition salts (such as copper sulfate) decompose further at excessive temperatures into metal oxides and gaseous sulfur trioxide (\(\text{SO}_3\)). This causes excess mass loss, artificially inflating the apparent mass of water and yielding a value of \(x\) that is too high. <em>Solution: Heat gently with a controlled flame.</em></li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 4: Empirical & Molecular Formulae -->
+        <section class="space-y-5">
+            <div class="border-b border-emerald-300 pb-2">
+                <h2 class="text-xl md:text-2xl font-bold text-emerald-950 flex items-center gap-2.5">
+                    <span class="flex items-center justify-center w-7 h-7 rounded-lg bg-emerald-600 text-white text-xs font-bold font-mono-custom">04</span>
+                    Empirical &amp; Molecular Formulae
+                </h2>
+            </div>
+
+            <p class="text-sm text-slate-700 leading-relaxed">
+                Chemical formulae represent elemental composition in two complementary formats:
+            </p>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-5 text-xs">
+                <div class="glass-card p-5 rounded-2xl space-y-2">
+                    <span class="bg-emerald-100 text-emerald-900 text-xs px-2.5 py-1 rounded-full font-bold">Empirical Formula</span>
+                    <h3 class="font-bold text-slate-900 text-sm">Simplest Whole-Number Ratio</h3>
+                    <p class="text-slate-600 leading-relaxed">
+                        The simplest whole-number ratio of atoms of each element present in a compound.
+                    </p>
+                    <div class="font-mono-custom text-emerald-900 bg-emerald-50/70 p-2 rounded text-[11px]">
+                        Butane: \(\text{C}_2\text{H}_5\)
+                    </div>
+                </div>
+
+                <div class="glass-card p-5 rounded-2xl space-y-2">
+                    <span class="bg-teal-100 text-teal-900 text-xs px-2.5 py-1 rounded-full font-bold">Molecular Formula</span>
+                    <h3 class="font-bold text-slate-900 text-sm">Actual Number of Atoms</h3>
+                    <p class="text-slate-600 leading-relaxed">
+                        The actual number of atoms of each element present in one molecule of a compound:
+                    </p>
+                    <div class="font-mono-custom text-teal-900 bg-teal-50/70 p-2 rounded text-[11px]">
+                        \(\text{Molecular Formula} = (\text{Empirical Formula}) \times \frac{M_r}{\text{Empirical } M_r} \implies \text{C}_4\text{H}_{10}\)
+                    </div>
+                </div>
+            </div>
+
+            <!-- Perfume Solvent Worked Example -->
+            <div class="glass-card-accent p-5 rounded-2xl space-y-3">
+                <span class="text-xs font-mono-custom font-bold text-emerald-800 uppercase tracking-wide">Worked Example &bull; Perfume Solvent</span>
+                <p class="text-xs text-slate-700 leading-relaxed">
+                    A sample contains \(0.60\text{ g}\) of carbon, \(0.15\text{ g}\) of hydrogen, and \(0.40\text{ g}\) of oxygen. Deduce its empirical formula:
+                </p>
+                <div class="overflow-x-auto">
+                    <table class="w-full text-xs text-left font-mono-custom border-collapse">
+                        <thead>
+                            <tr class="text-slate-500 border-b border-emerald-200 text-[11px]">
+                                <th class="pb-1.5 font-semibold">Element</th>
+                                <th class="pb-1.5 font-semibold">Mass / g</th>
+                                <th class="pb-1.5 font-semibold">Moles (\(n = m/A_r\))</th>
+                                <th class="pb-1.5 font-semibold">Divide by Smallest (\(0.025\))</th>
+                                <th class="pb-1.5 font-semibold">Simplest Ratio</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-emerald-100 text-[11px]">
+                            <tr>
+                                <td class="py-1.5 font-bold text-slate-900 font-sans">Carbon (\(\text{C}\))</td>
+                                <td>\(0.60\)</td>
+                                <td>\(\frac{0.60}{12.0} = 0.050\)</td>
+                                <td>\(\frac{0.050}{0.025} = 2.0\)</td>
+                                <td class="font-bold text-emerald-800">2</td>
+                            </tr>
+                            <tr>
+                                <td class="py-1.5 font-bold text-slate-900 font-sans">Hydrogen (\(\text{H}\))</td>
+                                <td>\(0.15\)</td>
+                                <td>\(\frac{0.15}{1.0} = 0.150\)</td>
+                                <td>\(\frac{0.150}{0.025} = 6.0\)</td>
+                                <td class="font-bold text-emerald-800">6</td>
+                            </tr>
+                            <tr>
+                                <td class="py-1.5 font-bold text-slate-900 font-sans">Oxygen (\(\text{O}\))</td>
+                                <td>\(0.40\)</td>
+                                <td>\(\frac{0.40}{16.0} = 0.025\)</td>
+                                <td>\(\frac{0.025}{0.025} = 1.0\)</td>
+                                <td class="font-bold text-emerald-800">1</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="text-xs font-mono-custom text-emerald-950 bg-emerald-100/70 p-2.5 rounded-lg font-bold text-center">
+                    Empirical Formula: \(\text{C}_2\text{H}_6\text{O}\) (Ethanol or Dimethyl ether)
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 5: Progress Checks & Practice Calculations -->
+        <section class="space-y-6">
+            <div class="border-b border-emerald-300 pb-2">
+                <h2 class="text-xl md:text-2xl font-bold text-emerald-950 flex items-center gap-2.5">
+                    <span class="flex items-center justify-center w-7 h-7 rounded-lg bg-emerald-600 text-white text-xs font-bold font-mono-custom">05</span>
+                    Progress Checks
+                </h2>
+            </div>
+
+            <!-- Task 1: Amount of Substance & Avogadro Calculations -->
+            <div class="glass-card p-6 rounded-2xl space-y-5">
+                <div class="flex flex-wrap items-center justify-between gap-2 border-b border-emerald-100 pb-2">
+                    <h3 class="font-bold text-sm text-slate-900">Task 1: Amount of Substance &amp; Particles</h3>
+                    <span class="text-xs text-emerald-700 font-mono-custom font-semibold">10 Quantitative Problems</span>
+                </div>
+
+                <div class="p-3 bg-emerald-50/70 border border-emerald-200 rounded-xl text-xs text-emerald-950 font-mono-custom leading-relaxed">
+                    <strong>Format Guidance:</strong> For values involving powers of 10, write using standard scientific exponential notation (e.g. write \(3.60 \times 10^{24}\) as <code class="bg-white px-1.5 py-0.5 rounded font-bold text-emerald-800 border border-emerald-200">3.60e24</code> or <code class="bg-white px-1.5 py-0.5 rounded font-bold text-emerald-800 border border-emerald-200">3.60x10^24</code>).
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs font-mono-custom">
+                    <!-- Q1 -->
+                    <div class="bg-emerald-50/50 p-3.5 rounded-xl border border-emerald-200/80 space-y-1.5">
+                        <label class="block font-sans font-semibold text-slate-800">1. Number of \(\text{Cl}^-\) ions in \(285\text{ g}\) of \(\text{MgCl}_2\):</label>
+                        <div class="flex gap-2">
+                            <input type="text" id="pc1-q1" class="w-full p-2 border border-emerald-300 rounded-lg text-xs bg-white outline-none focus:ring-2 focus:ring-emerald-500" placeholder="Enter answer">
+                            <button onclick="checkTask1(1)" class="bg-emerald-700 hover:bg-emerald-800 text-white font-bold py-1.5 px-3 rounded-lg text-xs font-sans">Check</button>
+                        </div>
+                        <span id="stat-pc1-1" class="block font-bold"></span>
+                    </div>
+
+                    <!-- Q2 -->
+                    <div class="bg-emerald-50/50 p-3.5 rounded-xl border border-emerald-200/80 space-y-1.5">
+                        <label class="block font-sans font-semibold text-slate-800">2. Number of \(\text{Fe}^{3+}\) ions in \(400\text{ g}\) of \(\text{Fe}_2\text{O}_3\):</label>
+                        <div class="flex gap-2">
+                            <input type="text" id="pc1-q2" class="w-full p-2 border border-emerald-300 rounded-lg text-xs bg-white outline-none focus:ring-2 focus:ring-emerald-500" placeholder="Enter answer">
+                            <button onclick="checkTask1(2)" class="bg-emerald-700 hover:bg-emerald-800 text-white font-bold py-1.5 px-3 rounded-lg text-xs font-sans">Check</button>
+                        </div>
+                        <span id="stat-pc1-2" class="block font-bold"></span>
+                    </div>
+
+                    <!-- Q3 -->
+                    <div class="bg-emerald-50/50 p-3.5 rounded-xl border border-emerald-200/80 space-y-1.5">
+                        <label class="block font-sans font-semibold text-slate-800">3. Molecules of water in \(150\text{ g}\) of \(\text{CuSO}_4 \cdot 5\text{H}_2\text{O}\):</label>
+                        <div class="flex gap-2">
+                            <input type="text" id="pc1-q3" class="w-full p-2 border border-emerald-300 rounded-lg text-xs bg-white outline-none focus:ring-2 focus:ring-emerald-500" placeholder="Enter answer">
+                            <button onclick="checkTask1(3)" class="bg-emerald-700 hover:bg-emerald-800 text-white font-bold py-1.5 px-3 rounded-lg text-xs font-sans">Check</button>
+                        </div>
+                        <span id="stat-pc1-3" class="block font-bold"></span>
+                    </div>
+
+                    <!-- Q4 -->
+                    <div class="bg-emerald-50/50 p-3.5 rounded-xl border border-emerald-200/80 space-y-1.5">
+                        <label class="block font-sans font-semibold text-slate-800">4. Molecules of water in \(2.0\text{ cm}^3\) of pure liquid water (\(\rho = 1.0\text{ g cm}^{-3}\)):</label>
+                        <div class="flex gap-2">
+                            <input type="text" id="pc1-q4" class="w-full p-2 border border-emerald-300 rounded-lg text-xs bg-white outline-none focus:ring-2 focus:ring-emerald-500" placeholder="Enter answer">
+                            <button onclick="checkTask1(4)" class="bg-emerald-700 hover:bg-emerald-800 text-white font-bold py-1.5 px-3 rounded-lg text-xs font-sans">Check</button>
+                        </div>
+                        <span id="stat-pc1-4" class="block font-bold"></span>
+                    </div>
+
+                    <!-- Q5 -->
+                    <div class="bg-emerald-50/50 p-3.5 rounded-xl border border-emerald-200/80 space-y-1.5">
+                        <label class="block font-sans font-semibold text-slate-800">5. Nitrogen atoms in a balloon of \(4.0\text{ dm}^3\) of \(\text{N}_2\) at r.t.p. (\(V_m = 24.0\text{ dm}^3\)):</label>
+                        <div class="flex gap-2">
+                            <input type="text" id="pc1-q5" class="w-full p-2 border border-emerald-300 rounded-lg text-xs bg-white outline-none focus:ring-2 focus:ring-emerald-500" placeholder="Enter answer">
+                            <button onclick="checkTask1(5)" class="bg-emerald-700 hover:bg-emerald-800 text-white font-bold py-1.5 px-3 rounded-lg text-xs font-sans">Check</button>
+                        </div>
+                        <span id="stat-pc1-5" class="block font-bold"></span>
+                    </div>
+
+                    <!-- Q6 -->
+                    <div class="bg-emerald-50/50 p-3.5 rounded-xl border border-emerald-200/80 space-y-1.5">
+                        <label class="block font-sans font-semibold text-slate-800">6. Mass of \(1.24 \times 10^{24}\) atoms of silver (\(\text{Ag}\)):</label>
+                        <div class="flex gap-2">
+                            <input type="number" id="pc1-q6" class="w-full p-2 border border-emerald-300 rounded-lg text-xs bg-white outline-none focus:ring-2 focus:ring-emerald-500" placeholder="Enter mass (g)">
+                            <button onclick="checkTask1(6)" class="bg-emerald-700 hover:bg-emerald-800 text-white font-bold py-1.5 px-3 rounded-lg text-xs font-sans">Check</button>
+                        </div>
+                        <span id="stat-pc1-6" class="block font-bold"></span>
+                    </div>
+
+                    <!-- Q7 -->
+                    <div class="bg-emerald-50/50 p-3.5 rounded-xl border border-emerald-200/80 space-y-1.5">
+                        <label class="block font-sans font-semibold text-slate-800">7. Mass of exactly \(2\) individual molecules of \(\text{CO}_2\) in grams:</label>
+                        <div class="flex gap-2">
+                            <input type="text" id="pc1-q7" class="w-full p-2 border border-emerald-300 rounded-lg text-xs bg-white outline-none focus:ring-2 focus:ring-emerald-500" placeholder="Enter mass (g)">
+                            <button onclick="checkTask1(7)" class="bg-emerald-700 hover:bg-emerald-800 text-white font-bold py-1.5 px-3 rounded-lg text-xs font-sans">Check</button>
+                        </div>
+                        <span id="stat-pc1-7" class="block font-bold"></span>
+                    </div>
+
+                    <!-- Q8 -->
+                    <div class="bg-emerald-50/50 p-3.5 rounded-xl border border-emerald-200/80 space-y-1.5">
+                        <label class="block font-sans font-semibold text-slate-800">8. Moles in \(500\text{ g}\) of \(\text{Fe}_2(\text{SO}_4)_3\) (\(M = 399.9\text{ g/mol}\)):</label>
+                        <div class="flex gap-2">
+                            <input type="number" id="pc1-q8" class="w-full p-2 border border-emerald-300 rounded-lg text-xs bg-white outline-none focus:ring-2 focus:ring-emerald-500" placeholder="Enter moles" step="0.01">
+                            <button onclick="checkTask1(8)" class="bg-emerald-700 hover:bg-emerald-800 text-white font-bold py-1.5 px-3 rounded-lg text-xs font-sans">Check</button>
+                        </div>
+                        <span id="stat-pc1-8" class="block font-bold"></span>
+                    </div>
+
+                    <!-- Q9 -->
+                    <div class="bg-emerald-50/50 p-3.5 rounded-xl border border-emerald-200/80 space-y-1.5">
+                        <label class="block font-sans font-semibold text-slate-800">9. Moles in \(200\text{ g}\) of \(\text{Al}(\text{OH})_3\) (\(M = 78.0\text{ g/mol}\)):</label>
+                        <div class="flex gap-2">
+                            <input type="number" id="pc1-q9" class="w-full p-2 border border-emerald-300 rounded-lg text-xs bg-white outline-none focus:ring-2 focus:ring-emerald-500" placeholder="Enter moles" step="0.01">
+                            <button onclick="checkTask1(9)" class="bg-emerald-700 hover:bg-emerald-800 text-white font-bold py-1.5 px-3 rounded-lg text-xs font-sans">Check</button>
+                        </div>
+                        <span id="stat-pc1-9" class="block font-bold"></span>
+                    </div>
+
+                    <!-- Q10 -->
+                    <div class="bg-emerald-50/50 p-3.5 rounded-xl border border-emerald-200/80 space-y-1.5">
+                        <label class="block font-sans font-semibold text-slate-800">10. Mass of \(0.13\text{ mol}\) of \(\text{NH}_4\text{NO}_3\) (\(M = 80.0\text{ g/mol}\)):</label>
+                        <div class="flex gap-2">
+                            <input type="number" id="pc1-q10" class="w-full p-2 border border-emerald-300 rounded-lg text-xs bg-white outline-none focus:ring-2 focus:ring-emerald-500" placeholder="Enter mass (g)" step="0.1">
+                            <button onclick="checkTask1(10)" class="bg-emerald-700 hover:bg-emerald-800 text-white font-bold py-1.5 px-3 rounded-lg text-xs font-sans">Check</button>
+                        </div>
+                        <span id="stat-pc1-10" class="block font-bold"></span>
+                    </div>
+                </div>
+
+                <div class="pt-2 flex gap-3">
+                    <button onclick="revealTask1Solutions()" class="bg-emerald-100 hover:bg-emerald-200 text-emerald-950 font-bold py-2 px-4 rounded-lg text-xs transition border border-emerald-300 font-sans">
+                        Reveal All Task 1 Solutions
+                    </button>
+                </div>
+                <div id="msg-task1-solutions" class="hidden text-xs bg-white p-4 rounded-xl border border-emerald-200 text-slate-700 space-y-2 leading-relaxed font-mono-custom"></div>
+            </div>
+
+            <!-- Task 2: Reacting Quantities & Hydrated Salt Practical -->
+            <div class="glass-card p-6 rounded-2xl space-y-5">
+                <div class="flex flex-wrap items-center justify-between gap-2 border-b border-emerald-100 pb-2">
+                    <h3 class="font-bold text-sm text-slate-900">Task 2: Reacting Quantities &amp; Hydrated Salt Analysis</h3>
+                    <span class="text-xs text-emerald-700 font-mono-custom font-semibold">5 Balanced Calculations</span>
+                </div>
+
+                <div class="space-y-4 text-xs font-mono-custom">
+                    <!-- Q1: MgO -->
+                    <div class="bg-emerald-50/50 p-4 rounded-xl border border-emerald-200/80 space-y-2">
+                        <p class="font-sans font-semibold text-slate-800">
+                            <strong>1. Oxidation of Magnesium:</strong> What mass of \(\text{MgO}\) is produced when \(60.0\text{ g}\) of \(\text{Mg}\) reacts completely with oxygen?<br>
+                            <span class="text-emerald-800 font-bold">Balanced: \(2\text{Mg}_{(s)} + \text{O}_{2(g)} \to 2\text{MgO}_{(s)}\)</span>
+                        </p>
+                        <div class="flex items-center gap-3">
+                            <input type="number" id="pc2-q1" class="w-32 p-2 border border-emerald-300 rounded-lg text-xs bg-white outline-none focus:ring-2 focus:ring-emerald-500" placeholder="grams" step="0.1">
+                            <button onclick="checkTask2(1)" class="bg-emerald-700 hover:bg-emerald-800 text-white font-bold py-2 px-4 rounded-lg font-sans">Verify</button>
+                            <span id="stat-pc2-1" class="font-bold"></span>
+                        </div>
+                    </div>
+
+                    <!-- Q2: Fe reduction -->
+                    <div class="bg-emerald-50/50 p-4 rounded-xl border border-emerald-200/80 space-y-2">
+                        <p class="font-sans font-semibold text-slate-800">
+                            <strong>2. Blast Furnace Reduction:</strong> What mass of Iron (\(\text{Fe}\)) is produced when \(200.0\text{ g}\) of \(\text{Fe}_2\text{O}_3\) is reduced by \(\text{CO}\)?<br>
+                            <span class="text-emerald-800 font-bold">Balanced: \(\text{Fe}_2\text{O}_{3(s)} + 3\text{CO}_{(g)} \to 2\text{Fe}_{(s)} + 3\text{CO}_{2(g)}\)</span>
+                        </p>
+                        <div class="flex items-center gap-3">
+                            <input type="number" id="pc2-q2" class="w-32 p-2 border border-emerald-300 rounded-lg text-xs bg-white outline-none focus:ring-2 focus:ring-emerald-500" placeholder="grams" step="0.1">
+                            <button onclick="checkTask2(2)" class="bg-emerald-700 hover:bg-emerald-800 text-white font-bold py-2 px-4 rounded-lg font-sans">Verify</button>
+                            <span id="stat-pc2-2" class="font-bold"></span>
+                        </div>
+                    </div>
+
+                    <!-- Q3: CaCO3 decomposition -->
+                    <div class="bg-emerald-50/50 p-4 rounded-xl border border-emerald-200/80 space-y-2">
+                        <p class="font-sans font-semibold text-slate-800">
+                            <strong>3. Limestone Thermal Decomposition:</strong> What mass of \(\text{CaCO}_3\) must decompose to yield exactly \(40.0\text{ g}\) of \(\text{CaO}\)?<br>
+                            <span class="text-emerald-800 font-bold">Balanced: \(\text{CaCO}_{3(s)} \to \text{CaO}_{(s)} + \text{CO}_{2(g)}\)</span>
+                        </p>
+                        <div class="flex items-center gap-3">
+                            <input type="number" id="pc2-q3" class="w-32 p-2 border border-emerald-300 rounded-lg text-xs bg-white outline-none focus:ring-2 focus:ring-emerald-500" placeholder="grams" step="0.1">
+                            <button onclick="checkTask2(3)" class="bg-emerald-700 hover:bg-emerald-800 text-white font-bold py-2 px-4 rounded-lg font-sans">Verify</button>
+                            <span id="stat-pc2-3" class="font-bold"></span>
+                        </div>
+                    </div>
+
+                    <!-- Q4: Copper nitrate decomposition -->
+                    <div class="bg-emerald-50/50 p-4 rounded-xl border border-emerald-200/80 space-y-2">
+                        <p class="font-sans font-semibold text-slate-800">
+                            <strong>4. Nitrate Thermal Decomposition:</strong> What mass of \(\text{CuO}\) is produced from decomposing \(25.0\text{ g}\) of \(\text{Cu}(\text{NO}_3)_2\)?<br>
+                            <span class="text-emerald-800 font-bold">Balanced: \(2\text{Cu}(\text{NO}_3)_{2(s)} \to 2\text{CuO}_{(s)} + 4\text{NO}_{2(g)} + \text{O}_{2(g)}\)</span>
+                        </p>
+                        <div class="flex items-center gap-3">
+                            <input type="number" id="pc2-q4" class="w-32 p-2 border border-emerald-300 rounded-lg text-xs bg-white outline-none focus:ring-2 focus:ring-emerald-500" placeholder="grams" step="0.1">
+                            <button onclick="checkTask2(4)" class="bg-emerald-700 hover:bg-emerald-800 text-white font-bold py-2 px-4 rounded-lg font-sans">Verify</button>
+                            <span id="stat-pc2-4" class="font-bold"></span>
+                        </div>
+                    </div>
+
+                    <!-- Q5: Hydrated Nickel Sulfate -->
+                    <div class="bg-emerald-50/50 p-4 rounded-xl border border-emerald-200/80 space-y-2">
+                        <p class="font-sans font-semibold text-slate-800">
+                            <strong>5. Hydrated Salt Formula Deduction:</strong> Crucible + lid = \(24.65\text{ g}\); crucible + lid + hydrated \(\text{NiSO}_4 \cdot x\text{H}_2\text{O} = 29.91\text{ g}\); crucible + lid + anhydrous \(\text{NiSO}_4\) after heating to constant mass = \(27.75\text{ g}\). Deduce the integer value of \(x\):
+                        </p>
+                        <div class="flex items-center gap-3">
+                            <input type="number" id="pc2-q5" class="w-24 p-2 border border-emerald-300 rounded-lg text-xs bg-white outline-none focus:ring-2 focus:ring-emerald-500" placeholder="Value of x" step="1">
+                            <button onclick="checkTask2(5)" class="bg-emerald-700 hover:bg-emerald-800 text-white font-bold py-2 px-4 rounded-lg font-sans">Verify</button>
+                            <span id="stat-pc2-5" class="font-bold"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="pt-2 flex gap-3">
+                    <button onclick="revealTask2Solutions()" class="bg-emerald-100 hover:bg-emerald-200 text-emerald-950 font-bold py-2 px-4 rounded-lg text-xs transition border border-emerald-300 font-sans">
+                        Reveal All Task 2 Solutions
+                    </button>
+                </div>
+                <div id="msg-task2-solutions" class="hidden text-xs bg-white p-4 rounded-xl border border-emerald-200 text-slate-700 space-y-2 leading-relaxed font-mono-custom"></div>
+            </div>
+
+            <!-- Task 3: Empirical & Molecular Formula Problems -->
+            <div class="glass-card p-6 rounded-2xl space-y-5">
+                <div class="flex flex-wrap items-center justify-between gap-2 border-b border-emerald-100 pb-2">
+                    <h3 class="font-bold text-sm text-slate-900">Task 3: Empirical &amp; Molecular Formula Investigations</h3>
+                    <span class="text-xs text-emerald-700 font-mono-custom font-semibold">5 Quantitative Determinations</span>
+                </div>
+
+                <div class="space-y-4 text-xs font-mono-custom">
+                    <!-- Q1: Al + Cl -->
+                    <div class="bg-emerald-50/50 p-4 rounded-xl border border-emerald-200/80 space-y-2">
+                        <p class="font-sans font-semibold text-slate-800">
+                            <strong>1. Aluminium Chloride:</strong> If \(18.0\text{ g}\) of aluminium reacts completely with \(71.0\text{ g}\) of chlorine, determine the empirical formula:
+                        </p>
+                        <div class="flex items-center gap-3">
+                            <input type="text" id="pc3-q1" class="w-36 p-2 border border-emerald-300 rounded-lg text-xs bg-white outline-none focus:ring-2 focus:ring-emerald-500" placeholder="Formula">
+                            <button onclick="checkTask3(1)" class="bg-emerald-700 hover:bg-emerald-800 text-white font-bold py-2 px-4 rounded-lg font-sans">Verify</button>
+                            <span id="stat-pc3-1" class="font-bold"></span>
+                        </div>
+                    </div>
+
+                    <!-- Q2: Iron Ore -->
+                    <div class="bg-emerald-50/50 p-4 rounded-xl border border-emerald-200/80 space-y-2">
+                        <p class="font-sans font-semibold text-slate-800">
+                            <strong>2. Iron Ore Oxide:</strong> An ore compound contains \(70.0\%\) Iron and \(30.0\%\) Oxygen by mass. Find its empirical formula:
+                        </p>
+                        <div class="flex items-center gap-3">
+                            <input type="text" id="pc3-q2" class="w-36 p-2 border border-emerald-300 rounded-lg text-xs bg-white outline-none focus:ring-2 focus:ring-emerald-500" placeholder="Formula">
+                            <button onclick="checkTask3(2)" class="bg-emerald-700 hover:bg-emerald-800 text-white font-bold py-2 px-4 rounded-lg font-sans">Verify</button>
+                            <span id="stat-pc3-2" class="font-bold"></span>
+                        </div>
+                    </div>
+
+                    <!-- Q3: Carboxylic Acid -->
+                    <div class="bg-emerald-50/50 p-4 rounded-xl border border-emerald-200/80 space-y-2">
+                        <p class="font-sans font-semibold text-slate-800">
+                            <strong>3. Microbial Carboxylic Acid:</strong> A fermentation acid (\(M_r = 88.0\)) contains \(40.9\%\) Carbon and \(4.5\%\) Hydrogen by mass (balance Oxygen = \(54.6\%\)). State its molecular formula:
+                        </p>
+                        <div class="flex items-center gap-3">
+                            <input type="text" id="pc3-q3" class="w-36 p-2 border border-emerald-300 rounded-lg text-xs bg-white outline-none focus:ring-2 focus:ring-emerald-500" placeholder="Formula">
+                            <button onclick="checkTask3(3)" class="bg-emerald-700 hover:bg-emerald-800 text-white font-bold py-2 px-4 rounded-lg font-sans">Verify</button>
+                            <span id="stat-pc3-3" class="font-bold"></span>
+                        </div>
+                    </div>
+
+                    <!-- Q4: Citric Acid Combustion & Hydration -->
+                    <div class="bg-emerald-50/50 p-4 rounded-xl border border-emerald-200/80 space-y-2">
+                        <p class="font-sans font-semibold text-slate-800">
+                            <strong>4. Hydrated Citric Acid (\(\text{H}_3\text{Y} \cdot x\text{H}_2\text{O}\)):</strong> A \(3.00\text{ g}\) sample of hydrated citric acid (\(M_r = 210.0\)) is heated to constant mass leaving \(2.743\text{ g}\) of anhydrous \(\text{H}_3\text{Y}\). Deduce the integer value of \(x\):
+                        </p>
+                        <div class="flex items-center gap-3">
+                            <input type="number" id="pc3-q4" class="w-24 p-2 border border-emerald-300 rounded-lg text-xs bg-white outline-none focus:ring-2 focus:ring-emerald-500" placeholder="Value of x" step="1">
+                            <button onclick="checkTask3(4)" class="bg-emerald-700 hover:bg-emerald-800 text-white font-bold py-2 px-4 rounded-lg font-sans">Verify</button>
+                            <span id="stat-pc3-4" class="font-bold"></span>
+                        </div>
+                    </div>
+
+                    <!-- Q5: Calcium Dihydrogen Phosphate -->
+                    <div class="bg-emerald-50/50 p-4 rounded-xl border border-emerald-200/80 space-y-2">
+                        <p class="font-sans font-semibold text-slate-800">
+                            <strong>5. Calcium Salt (\(\text{Ca}(\text{H}_2\text{PO}_4)_x\)):</strong> A \(9.76\text{ g}\) sample contains \(0.17\text{ g}\) Hydrogen, \(2.59\text{ g}\) Phosphorus, \(5.33\text{ g}\) Oxygen, and the balance Calcium (\(1.67\text{ g}\)). Deduce the integer value of \(x\):
+                        </p>
+                        <div class="flex items-center gap-3">
+                            <input type="number" id="pc3-q5" class="w-24 p-2 border border-emerald-300 rounded-lg text-xs bg-white outline-none focus:ring-2 focus:ring-emerald-500" placeholder="Value of x" step="1">
+                            <button onclick="checkTask3(5)" class="bg-emerald-700 hover:bg-emerald-800 text-white font-bold py-2 px-4 rounded-lg font-sans">Verify</button>
+                            <span id="stat-pc3-5" class="font-bold"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="pt-2 flex gap-3">
+                    <button onclick="revealTask3Solutions()" class="bg-emerald-100 hover:bg-emerald-200 text-emerald-950 font-bold py-2 px-4 rounded-lg text-xs transition border border-emerald-300 font-sans">
+                        Reveal All Task 3 Solutions
+                    </button>
+                </div>
+                <div id="msg-task3-solutions" class="hidden text-xs bg-white p-4 rounded-xl border border-emerald-200 text-slate-700 space-y-2 leading-relaxed font-mono-custom"></div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-emerald-950 text-emerald-300 py-10 px-6 text-center text-xs border-t border-emerald-900">
+        <p>&copy; 2026 A-Level Chemistry Learning Module &bull; Amount of Substance &bull; Aligned with OCR, AQA, Edexcel, and IB DP specifications.</p>
+    </footer>
+
+    <!-- JavaScript Application Engine -->
+    <script>
+        // ==========================================
+        // 1. MOLE & PARTICLE CONVERTER ENGINE
+        // ==========================================
+        const AVOGADRO_CONSTANT = 6.022e23;
+
+        function updateMoleConverter() {
+            const selectEl = document.getElementById('calc-substance-select');
+            const massInput = document.getElementById('calc-mass-input');
+            const molesOutput = document.getElementById('calc-result-moles');
+            const particlesOutput = document.getElementById('calc-result-particles');
+            const breakdownEl = document.getElementById('calc-step-breakdown');
+
+            if (!selectEl || !massInput || !molesOutput || !particlesOutput || !breakdownEl) return;
+
+            const [molarMassStr, formula, name] = selectEl.value.split('|');
+            const M = parseFloat(molarMassStr);
+            const mass = parseFloat(massInput.value);
+
+            if (isNaN(mass) || mass <= 0 || isNaN(M) || M <= 0) {
+                molesOutput.innerText = '-- mol';
+                particlesOutput.innerText = '-- particles';
+                breakdownEl.innerHTML = '<span class="text-rose-600 font-bold">Please enter a positive numeric mass value.</span>';
+                return;
+            }
+
+            // Calculations: n = m / M, N = n * L
+            const n = mass / M;
+            const N = n * AVOGADRO_CONSTANT;
+
+            molesOutput.innerText = `${n >= 1000 ? n.toExponential(3) : n.toFixed(3)} mol`;
+            particlesOutput.innerHTML = `${N.toExponential(3).replace('e+', ' &times; 10^{').replace('e', ' &times; 10^{')}} ${formula === 'Ag' ? 'atoms' : 'molecules'}`.replace('10^{', '10<sup>') + '</sup>';
+
+            // Detailed dynamic breakdown
+            breakdownEl.innerHTML = `
+                <div class="space-y-1">
+                    <div><strong>Selected:</strong> ${name} (\\(${formula}\\)), \\(M = ${M.toFixed(1)}\\text{ g mol}^{-1}\\), Sample Mass \\(m = ${mass.toFixed(2)}\\text{ g}\\)</div>
+                    <div><strong>Step 1:</strong> Amount in moles \\(n = \\frac{m}{M} = \\frac{${mass.toFixed(2)}}{${M.toFixed(1)}} = \\mathbf{${n.toFixed(4)}\\text{ mol}}\\)</div>
+                    <div><strong>Step 2:</strong> Particle count \\(N = n \\times L = ${n.toFixed(4)} \\times (6.02 \\times 10^{23}) = \\mathbf{${N.toExponential(3).replace('e+', ' \\times 10^{')}}\\text{ particles}}\\)</div>
+                </div>
+            `;
+
+            if (window.MathJax && window.MathJax.typesetPromise) {
+                window.MathJax.typesetPromise([breakdownEl]);
+            }
+        }
+
+        // ==========================================
+        // 2. TASK 1 CHECKER
+        // ==========================================
+        const task1Solutions = {
+            1: { target: 3.60e24, tol: 0.15e24, hint: "M(MgCl2) = 95.2 g/mol. Remember there are 2 chloride ions per formula unit!" },
+            2: { target: 3.02e24, tol: 0.12e24, hint: "M(Fe2O3) = 159.7 g/mol. There are 2 Fe3+ ions per formula unit." },
+            3: { target: 1.81e24, tol: 0.08e24, hint: "M(CuSO4.5H2O) = 249.7 g/mol. Multiply moles of crystal by 5 for water molecules." },
+            4: { target: 6.69e22, tol: 0.25e22, hint: "Density of water is 1.0 g/cm3, so 2 cm3 = 2.0 g. Divide by 18.0 g/mol." },
+            5: { target: 2.01e23, tol: 0.10e23, hint: "Moles of N2 = 4/24 mol. Each N2 molecule contains 2 nitrogen atoms!" },
+            6: { target: 222.2, tol: 5.0, hint: "Divide atoms by L to get moles, then multiply by Ar of Ag (107.9 g/mol)." },
+            7: { target: 1.46e-22, tol: 0.10e-22, hint: "Mass of 1 mole = 44.0g. Divide by 6.02e23, then multiply by 2." },
+            8: { target: 1.25, tol: 0.04, hint: "M(Fe2(SO4)3) = 2(55.8) + 3(32.1 + 64) = 399.9 g/mol." },
+            9: { target: 2.56, tol: 0.08, hint: "M(Al(OH)3) = 27 + 3(17) = 78.0 g/mol." },
+            10: { target: 10.4, tol: 0.4, hint: "m = n * M = 0.13 mol * 80.0 g/mol." }
+        };
+
+        function checkTask1(qNum) {
+            const el = document.getElementById(`pc1-q${qNum}`);
+            const stat = document.getElementById(`stat-pc1-${qNum}`);
+            const rawVal = el.value.trim().toLowerCase().replace('x10^', 'e').replace('×10^', 'e');
+            const userNum = parseFloat(rawVal);
+
+            const sol = task1Solutions[qNum];
+            if (!isNaN(userNum) && Math.abs(userNum - sol.target) <= sol.tol) {
+                stat.innerHTML = `<span class="text-emerald-700 font-bold">✓ Correct (${sol.target > 1000 ? sol.target.toExponential(2) : sol.target})</span>`;
+            } else {
+                stat.innerHTML = `<span class="text-rose-600 font-bold">✗ Recheck (${sol.hint})</span>`;
+            }
+        }
+
+        function revealTask1Solutions() {
+            const box = document.getElementById('msg-task1-solutions');
+            box.classList.remove('hidden');
+            box.innerHTML = `
+                <div class="space-y-2">
+                    <p><strong>1. Chloride ions:</strong> \\(n(\\text{MgCl}_2) = \\frac{285}{95.21} = 2.993\\text{ mol} \\implies n(\\text{Cl}^-) = 5.987\\text{ mol} \\implies N = 5.987 \\times 6.02 \\times 10^{23} = \\mathbf{3.60 \\times 10^{24}}\\)</p>
+                    <p><strong>2. Iron ions:</strong> \\(n(\\text{Fe}_2\\text{O}_3) = \\frac{400}{159.7} = 2.505\\text{ mol} \\implies n(\\text{Fe}^{3+}) = 5.009\\text{ mol} \\implies N = 5.009 \\times 6.02 \\times 10^{23} = \\mathbf{3.02 \\times 10^{24}}\\)</p>
+                    <p><strong>3. Hydrated copper sulfate water:</strong> \\(n(\\text{salt}) = \\frac{150}{249.7} = 0.6007\\text{ mol} \\implies n(\\text{H}_2\\text{O}) = 3.004\\text{ mol} \\implies N = 3.004 \\times 6.02 \\times 10^{23} = \\mathbf{1.81 \\times 10^{24}}\\)</p>
+                    <p><strong>4. Water in 2.0 cm³:</strong> \\(m = 2.0\\text{ g} \\implies n = \\frac{2.0}{18.0} = 0.111\\text{ mol} \\implies N = 0.111 \\times 6.02 \\times 10^{23} = \\mathbf{6.69 \\times 10^{22}}\\)</p>
+                    <p><strong>5. Nitrogen atoms in 4.0 dm³:</strong> \\(n(\\text{N}_2) = \\frac{4.0}{24.0} = 0.1667\\text{ mol} \\implies n(\\text{N atoms}) = 0.3333\\text{ mol} \\implies N = \\mathbf{2.01 \\times 10^{23}}\\)</p>
+                    <p><strong>6. Mass of Ag atoms:</strong> \\(n = \\frac{1.24 \\times 10^{24}}{6.02 \\times 10^{23}} = 2.060\\text{ mol} \\implies m = 2.060 \\times 107.9 = \\mathbf{222.2\\text{ g}}\\)</p>
+                    <p><strong>7. Mass of 2 CO₂ molecules:</strong> \\(m = \\frac{2 \\times 44.01}{6.02 \\times 10^{23}} = \\mathbf{1.46 \\times 10^{-22}\\text{ g}}\\)</p>
+                    <p><strong>8. Moles in 500 g Fe₂(SO₄)₃:</strong> \\(n = \\frac{500}{399.9} = \\mathbf{1.25\\text{ mol}}\\)</p>
+                    <p><strong>9. Moles in 200 g Al(OH)₃:</strong> \\(n = \\frac{200}{78.0} = \\mathbf{2.56\\text{ mol}}\\)</p>
+                    <p><strong>10. Mass of 0.13 mol NH₄NO₃:</strong> \\(m = 0.13 \\times 80.0 = \\mathbf{10.4\\text{ g}}\\)</p>
+                </div>
+            `;
+            if (window.MathJax && window.MathJax.typesetPromise) {
+                window.MathJax.typesetPromise([box]);
+            }
+        }
+
+        // ==========================================
+        // 3. TASK 2 CHECKER
+        // ==========================================
+        function checkTask2(qNum) {
+            const userVal = parseFloat(document.getElementById(`pc2-q${qNum}`).value);
+            const stat = document.getElementById(`stat-pc2-${qNum}`);
+
+            if (qNum === 1) {
+                if (Math.abs(userVal - 99.5) < 2.0 || Math.abs(userVal - 100.0) < 2.0) {
+                    stat.innerHTML = "<span class='text-emerald-700 font-bold'>✓ Correct (99.5 g)</span>";
+                } else {
+                    stat.innerHTML = "<span class='text-rose-600 font-bold'>✗ Recheck: n(Mg) = 60/24.3 = 2.47 mol</span>";
+                }
+            }
+            else if (qNum === 2) {
+                if (Math.abs(userVal - 139.9) < 2.5 || Math.abs(userVal - 140.0) < 2.5) {
+                    stat.innerHTML = "<span class='text-emerald-700 font-bold'>✓ Correct (139.9 g)</span>";
+                } else {
+                    stat.innerHTML = "<span class='text-rose-600 font-bold'>✗ Recheck: 1 mol Fe2O3 yields 2 mol Fe</span>";
+                }
+            }
+            else if (qNum === 3) {
+                if (Math.abs(userVal - 71.4) < 1.5) {
+                    stat.innerHTML = "<span class='text-emerald-700 font-bold'>✓ Correct (71.4 g)</span>";
+                } else {
+                    stat.innerHTML = "<span class='text-rose-600 font-bold'>✗ Recheck: n(CaO) = 40/56.1 = 0.713 mol</span>";
+                }
+            }
+            else if (qNum === 4) {
+                if (Math.abs(userVal - 10.6) < 0.6) {
+                    stat.innerHTML = "<span class='text-emerald-700 font-bold'>✓ Correct (10.6 g)</span>";
+                } else {
+                    stat.innerHTML = "<span class='text-rose-600 font-bold'>✗ Recheck: 1 mol Cu(NO3)2 yields 1 mol CuO</span>";
+                }
+            }
+            else if (qNum === 5) {
+                if (userVal === 6 || userVal === 6.0) {
+                    stat.innerHTML = "<span class='text-emerald-700 font-bold'>✓ Correct (x = 6, NiSO₄·6H₂O)</span>";
+                } else {
+                    stat.innerHTML = "<span class='text-rose-600 font-bold'>✗ Recheck: m(water) = 2.16g, m(salt) = 3.10g</span>";
+                }
+            }
+        }
+
+        function revealTask2Solutions() {
+            const box = document.getElementById('msg-task2-solutions');
+            box.classList.remove('hidden');
+            box.innerHTML = `
+                <div class="space-y-2">
+                    <p><strong>1. Magnesium oxide:</strong> \\[2\\text{Mg} + \\text{O}_2 \\to 2\\text{MgO}\\]
+                    \\(n(\\text{Mg}) = \\frac{60.0}{24.31} = 2.468\\text{ mol} \\implies m(\\text{MgO}) = 2.468 \\times 40.31 = \\mathbf{99.5\\text{ g}}\\)</p>
+                    <p><strong>2. Iron production:</strong> \\[\\text{Fe}_2\\text{O}_3 + 3\\text{CO} \\to 2\\text{Fe} + 3\\text{CO}_2\\]
+                    \\(n(\\text{Fe}_2\\text{O}_3) = \\frac{200.0}{159.7} = 1.252\\text{ mol} \\implies n(\\text{Fe}) = 2 \\times 1.252 = 2.505\\text{ mol} \\implies m(\\text{Fe}) = 2.505 \\times 55.85 = \\mathbf{139.9\\text{ g}}\\)</p>
+                    <p><strong>3. Limestone decomposition:</strong> \\[\\text{CaCO}_3 \\to \\text{CaO} + \\text{CO}_2\\]
+                    \\(n(\\text{CaO}) = \\frac{40.0}{56.08} = 0.7133\\text{ mol} \\implies m(\\text{CaCO}_3) = 0.7133 \\times 100.09 = \\mathbf{71.4\\text{ g}}\\)</p>
+                    <p><strong>4. Copper nitrate decomposition:</strong> \\[2\\text{Cu}(\\text{NO}_3)_2 \\to 2\\text{CuO} + 4\\text{NO}_2 + \\text{O}_2\\]
+                    \\(n(\\text{Cu}(\\text{NO}_3)_2) = \\frac{25.0}{187.56} = 0.1333\\text{ mol} \\implies m(\\text{CuO}) = 0.1333 \\times 79.55 = \\mathbf{10.6\\text{ g}}\\)</p>
+                    <p><strong>5. Hydrated Nickel(II) sulfate:</strong>
+                    \\(m(\\text{hydrated}) = 29.91 - 24.65 = 5.26\\text{ g}\\)<br>
+                    \\(m(\\text{anhydrous NiSO}_4) = 27.75 - 24.65 = 3.10\\text{ g} \\implies n(\\text{NiSO}_4) = \\frac{3.10}{154.76} = 0.0200\\text{ mol}\\)<br>
+                    \\(m(\\text{H}_2\\text{O lost}) = 5.26 - 3.10 = 2.16\\text{ g} \\implies n(\\text{H}_2\\text{O}) = \\frac{2.16}{18.0} = 0.120\\text{ mol}\\)<br>
+                    \\(x = \\frac{0.120}{0.0200} = \\mathbf{6} \\implies \\mathbf{\\text{NiSO}_4 \\cdot 6\\text{H}_2\\text{O}}\\)
+                    </p>
+                </div>
+            `;
+            if (window.MathJax && window.MathJax.typesetPromise) {
+                window.MathJax.typesetPromise([box]);
+            }
+        }
+
+        // ==========================================
+        // 4. TASK 3 CHECKER
+        // ==========================================
+        function checkTask3(qNum) {
+            const rawVal = document.getElementById(`pc3-q${qNum}`).value.trim().toUpperCase().replace(/\s+/g, '');
+            const stat = document.getElementById(`stat-pc3-${qNum}`);
+
+            if (qNum === 1) {
+                if (rawVal === 'ALCL3' || rawVal === 'ALCL₃') {
+                    stat.innerHTML = "<span class='text-emerald-700 font-bold'>✓ Correct (AlCl₃)</span>";
+                } else {
+                    stat.innerHTML = "<span class='text-rose-600 font-bold'>✗ Recheck (Al = 0.67 mol, Cl = 2.0 mol)</span>";
+                }
+            }
+            else if (qNum === 2) {
+                if (rawVal === 'FE2O3' || rawVal === 'FE₂O₃') {
+                    stat.innerHTML = "<span class='text-emerald-700 font-bold'>✓ Correct (Fe₂O₃)</span>";
+                } else {
+                    stat.innerHTML = "<span class='text-rose-600 font-bold'>✗ Recheck (Fe = 1.25 mol, O = 1.875 mol)</span>";
+                }
+            }
+            else if (qNum === 3) {
+                if (rawVal === 'C3H4O3' || rawVal === 'C₃H₄O₃') {
+                    stat.innerHTML = "<span class='text-emerald-700 font-bold'>✓ Correct (C₃H₄O₃, Pyruvic acid)</span>";
+                } else {
+                    stat.innerHTML = "<span class='text-rose-600 font-bold'>✗ Recheck: Ratio C:H:O = 3:4:3</span>";
+                }
+            }
+            else if (qNum === 4) {
+                const num = parseInt(rawVal);
+                if (num === 1) {
+                    stat.innerHTML = "<span class='text-emerald-700 font-bold'>✓ Correct (x = 1, monohydrate)</span>";
+                } else {
+                    stat.innerHTML = "<span class='text-rose-600 font-bold'>✗ Recheck: water lost = 0.257 g</span>";
+                }
+            }
+            else if (qNum === 5) {
+                const num = parseInt(rawVal);
+                if (num === 2) {
+                    stat.innerHTML = "<span class='text-emerald-700 font-bold'>✓ Correct (x = 2, Ca(H₂PO₄)₂)</span>";
+                } else {
+                    stat.innerHTML = "<span class='text-rose-600 font-bold'>✗ Recheck: Ca = 0.0417 mol, P = 0.0836 mol</span>";
+                }
+            }
+        }
+
+        function revealTask3Solutions() {
+            const box = document.getElementById('msg-task3-solutions');
+            box.classList.remove('hidden');
+            box.innerHTML = `
+                <div class="space-y-2">
+                    <p><strong>1. Aluminium chloride:</strong> \\(n(\\text{Al}) = \\frac{18.0}{27.0} = 0.667\\text{ mol}\\), \\(n(\\text{Cl}) = \\frac{71.0}{35.45} = 2.00\\text{ mol} \\implies 0.667 : 2.00 = 1 : 3 \\implies \\mathbf{\\text{AlCl}_3}\\)</p>
+                    <p><strong>2. Iron oxide:</strong> \\(n(\\text{Fe}) = \\frac{70.0}{55.85} = 1.253\\text{ mol}\\), \\(n(\\text{O}) = \\frac{30.0}{16.0} = 1.875\\text{ mol} \\implies 1 : 1.5 = \\mathbf{2 : 3} \\implies \\mathbf{\\text{Fe}_2\\text{O}_3}\\)</p>
+                    <p><strong>3. Carboxylic acid:</strong> \\(n(\\text{C}) = \\frac{40.9}{12.0} = 3.41\\), \\(n(\\text{H}) = \\frac{4.5}{1.0} = 4.50\\), \\(n(\\text{O}) = \\frac{54.6}{16.0} = 3.41 \\implies 1 : 1.33 : 1 = 3 : 4 : 3 \\implies \\text{Empirical } = \\text{C}_3\\text{H}_4\\text{O}_3\\) (Formula mass = \\(88.0\\)). Since \\(M_r = 88.0\\), molecular formula = \\(\\mathbf{\\text{C}_3\\text{H}_4\\text{O}_3}\\) (Pyruvic acid).</p>
+                    <p><strong>4. Citric acid proof:</strong><br>
+                    (a) \\(n(\\text{C}) = \\frac{1.89}{44.0} = 0.04295\\text{ mol} \\implies m(\\text{C}) = 0.5154\\text{ g}\\)<br>
+                    \\(n(\\text{H}) = 2 \\times \\frac{0.643}{18.0} = 0.07144\\text{ mol} \\implies m(\\text{H}) = 0.07144\\text{ g}\\)<br>
+                    \\(m(\\text{O in acid}) = 1.50 - 0.5154 - 0.0714 = 0.9132\\text{ g} \\implies n(\\text{O}) = 0.05708\\text{ mol}\\)<br>
+                    Ratio \\(\\text{C} : \\text{H} : \\text{O} = 0.04295 : 0.07144 : 0.05708 = 3 : 4.99 : 3.99 = \\mathbf{\\text{C}_3\\text{H}_5\\text{O}_4}\\)<br>
+                    (b) \\(m(\\text{H}_2\\text{O lost}) = 3.00 - 2.743 = 0.257\\text{ g} \\implies n(\\text{H}_2\\text{O}) = \\frac{0.257}{18.0} = 0.01428\\text{ mol}\\)<br>
+                    \\(M_r(\\text{H}_3\\text{Y}) = 210.0 - 18.0 = 192.0 \\implies n(\\text{H}_3\\text{Y}) = \\frac{2.743}{192.0} = 0.01429\\text{ mol}\\)<br>
+                    Ratio \\(= \\frac{0.01428}{0.01429} = 1.0 \\implies \\mathbf{x = 1}\\)
+                    </p>
+                    <p><strong>5. Calcium dihydrogen phosphate:</strong><br>
+                    \\(m(\\text{Ca}) = 9.76 - (0.17 + 2.59 + 5.33) = 1.67\\text{ g}\\)<br>
+                    \\(n(\\text{Ca}) = \\frac{1.67}{40.08} = 0.04167\\text{ mol}\\); \\(n(\\text{H}) = \\frac{0.17}{1.0} = 0.170\\text{ mol}\\); \\(n(\\text{P}) = \\frac{2.59}{30.97} = 0.08363\\text{ mol}\\); \\(n(\\text{O}) = \\frac{5.33}{16.0} = 0.3331\\text{ mol}\\)<br>
+                    Dividing by smallest (\\(0.04167\\)): \\(\\text{Ca} : \\text{H} : \\text{P} : \\text{O} = 1 : 4.08 : 2.01 : 7.99 = \\mathbf{\\text{CaH}_4\\text{P}_2\\text{O}_8}\\)<br>
+                    Rewriting as \\(\\text{Ca}(\\text{H}_2\\text{PO}_4)_x\\): since each \\(\\text{H}_2\\text{PO}_4^-\\) group contains 2 H, 1 P, and 4 O atoms, \\(\\mathbf{x = 2}\\).
+                    </p>
+                </div>
+            `;
+            if (window.MathJax && window.MathJax.typesetPromise) {
+                window.MathJax.typesetPromise([box]);
+            }
+        }
+
+        // ==========================================
+        // INITIALIZATION
+        // ==========================================
+        window.addEventListener('DOMContentLoaded', () => {
+            updateMoleConverter();
+        });
+
+        // ==========================================
+        // 5. CORE PRACTICAL 1 INTERACTIVE SIMULATOR
+        // ==========================================
+        let labStage = 1;
+        let labHeatingCycle = 0;
+        let labSteamAnimId = null;
+
+        const stageWeights = {
+            1: { balance: "25.68 g", hydrated: "--", sample: "--", desc: "Step 1: Clean, dry empty crucible and lid cooled in desiccator. Balance tared at 25.68 g." },
+            2: { balance: "29.48 g", hydrated: "29.48 g", sample: "3.80 g", desc: "Step 2: Hydrated copper(II) sulfate crystals added. Blue crystalline appearance. Mass = 3.80 g." },
+            3: { balance: "28.14 g", hydrated: "29.48 g", sample: "3.80 g", desc: "Step 3: Heating gently then strongly with lid ajar. Water driven off as steam. Crystals turning grey-white." },
+            4: { balance: "28.10 g", hydrated: "29.48 g", sample: "3.80 g", desc: "Steps 4-5: Reheated, cooled in desiccator, and reweighed to constant mass (28.10 g)." }
+        };
+
+        const heatingCycleData = [
+            { cycle: "Cycle 1", mass: "28.14 g", note: "Initial dehydration" },
+            { cycle: "Cycle 2", mass: "28.11 g", note: "Further water loss" },
+            { cycle: "Cycle 3", mass: "28.10 g", note: "Constant mass reached" },
+            { cycle: "Cycle 4", mass: "28.10 g", note: "Agreement within 0.01 g" }
+        ];
+
+        function labSetStage(stage) {
+            labStage = stage;
+            const data = stageWeights[stage];
+
+            for (let i = 1; i <= 4; i++) {
+                const btn = document.getElementById(`btn-lab-step${i}`);
+                if (i === stage) {
+                    btn.className = "py-2 px-2.5 rounded-lg text-xs font-bold font-sans transition bg-emerald-700 text-white shadow-sm border border-emerald-500";
+                } else {
+                    btn.className = "py-2 px-2.5 rounded-lg text-xs font-bold font-sans transition bg-white/80 hover:bg-emerald-50 text-slate-700 border border-emerald-200";
+                }
+            }
+
+            if (stage >= 2) document.getElementById('btn-lab-step3').disabled = false;
+            if (stage >= 3) document.getElementById('btn-lab-step4').disabled = false;
+
+            document.getElementById('sim-balance-mass').innerText = data.balance;
+            document.getElementById('sim-status-banner').innerText = data.desc;
+            document.getElementById('res-m-hydrated').innerText = data.hydrated;
+            document.getElementById('res-m-sample').innerText = data.sample;
+
+            const crystalBed = document.getElementById('svg-crystal-bed');
+            const flameGrp = document.getElementById('svg-flame-group');
+            const steamGrp = document.getElementById('svg-steam-group');
+            const lid = document.getElementById('svg-crucible-lid');
+
+            if (stage === 1) {
+                document.getElementById('crucible-step-badge').innerText = "Step 1: Empty Crucible & Lid";
+                document.getElementById('sim-state-text').innerText = "Cold & Clean";
+                crystalBed.setAttribute('fill', 'transparent');
+                flameGrp.classList.add('hidden');
+                steamGrp.classList.add('hidden');
+                lid.setAttribute('transform', 'translate(0, 0)');
+                resetHeatingCyclesTable();
+            } else if (stage === 2) {
+                document.getElementById('crucible-step-badge').innerText = "Step 2: Hydrated Salt Added";
+                document.getElementById('sim-state-text').innerText = "Hydrated Crystals";
+                crystalBed.setAttribute('fill', '#0284c7');
+                flameGrp.classList.add('hidden');
+                steamGrp.classList.add('hidden');
+                lid.setAttribute('transform', 'translate(0, 0)');
+                resetHeatingCyclesTable();
+            } else if (stage === 3) {
+                document.getElementById('crucible-step-badge').innerText = "Step 3: Heating & Dehydration";
+                document.getElementById('sim-state-text').innerText = "Heating (Bunsen Active)";
+                crystalBed.setAttribute('fill', '#94a3b8');
+                flameGrp.classList.remove('hidden');
+                steamGrp.classList.remove('hidden');
+                lid.setAttribute('transform', 'translate(-6, -8) rotate(-12, 140, 85)');
+                animateSteam();
+                populateHeatingCyclesUpTo(2);
+            } else if (stage === 4) {
+                document.getElementById('crucible-step-badge').innerText = "Steps 4-5: Constant Mass Reached";
+                document.getElementById('sim-state-text').innerText = "Anhydrous Constant Mass";
+                crystalBed.setAttribute('fill', '#cbd5e1');
+                flameGrp.classList.add('hidden');
+                steamGrp.classList.add('hidden');
+                lid.setAttribute('transform', 'translate(0, 0)');
+                populateHeatingCyclesUpTo(4);
+
+                document.getElementById('res-val-x').innerText = "5 (5.06)";
+                document.getElementById('res-summary-formula').innerHTML = "Formula: <strong>CuSO₄·5H₂O</strong> (Copper(II) sulfate pentahydrate)";
+            }
+        }
+
+        function resetHeatingCyclesTable() {
+            const tbody = document.getElementById('table-heating-cycles');
+            tbody.innerHTML = `
+                <tr><td class="p-1.5 border border-emerald-100">Cycle 1</td><td class="p-1.5 border border-emerald-100 text-slate-400">--</td><td class="p-1.5 border border-emerald-100 text-slate-400">Awaiting heat</td></tr>
+                <tr><td class="p-1.5 border border-emerald-100">Cycle 2</td><td class="p-1.5 border border-emerald-100 text-slate-400">--</td><td class="p-1.5 border border-emerald-100 text-slate-400">Awaiting heat</td></tr>
+                <tr><td class="p-1.5 border border-emerald-100">Cycle 3</td><td class="p-1.5 border border-emerald-100 text-slate-400">--</td><td class="p-1.5 border border-emerald-100 text-slate-400">Awaiting heat</td></tr>
+                <tr><td class="p-1.5 border border-emerald-100">Cycle 4</td><td class="p-1.5 border border-emerald-100 text-slate-400">--</td><td class="p-1.5 border border-emerald-100 text-slate-400">Awaiting heat</td></tr>
+            `;
+            document.getElementById('res-val-x').innerText = "--";
+            document.getElementById('res-summary-formula').innerText = "Formula: Pending complete dehydration";
+        }
+
+        function populateHeatingCyclesUpTo(num) {
+            const tbody = document.getElementById('table-heating-cycles');
+            tbody.innerHTML = '';
+            for (let i = 0; i < 4; i++) {
+                const item = heatingCycleData[i];
+                if (i < num) {
+                    tbody.innerHTML += `
+                        <tr class="bg-emerald-50/70 font-bold">
+                            <td class="p-1.5 border border-emerald-200 text-emerald-950">${item.cycle}</td>
+                            <td class="p-1.5 border border-emerald-200 text-emerald-900">${item.mass}</td>
+                            <td class="p-1.5 border border-emerald-200 text-emerald-800 text-[10px]">${item.note}</td>
+                        </tr>
+                    `;
+                } else {
+                    tbody.innerHTML += `
+                        <tr>
+                            <td class="p-1.5 border border-emerald-100">${item.cycle}</td>
+                            <td class="p-1.5 border border-emerald-100 text-slate-400">--</td>
+                            <td class="p-1.5 border border-emerald-100 text-slate-400">Pending</td>
+                        </tr>
+                    `;
+                }
+            }
+        }
+
+        function animateSteam() {
+            if (labStage !== 3) return;
+            const s1 = document.getElementById('svg-steam-1');
+            const s2 = document.getElementById('svg-steam-2');
+            const s3 = document.getElementById('svg-steam-3');
+            if (!s1 || !s2 || !s3) return;
+
+            const t = performance.now() / 250;
+            s1.setAttribute('d', `M 160 70 Q ${155 + Math.sin(t)*6} 50 ${162 + Math.cos(t)*4} 30`);
+            s2.setAttribute('d', `M 172 68 Q ${178 - Math.sin(t)*7} 48 ${170 + Math.sin(t)*5} 28`);
+            s3.setAttribute('d', `M 182 72 Q ${190 + Math.cos(t)*5} 52 ${184 - Math.sin(t)*4} 32`);
+
+            labSteamAnimId = requestAnimationFrame(animateSteam);
+        }
+    </script>
+</body>
+</html>
